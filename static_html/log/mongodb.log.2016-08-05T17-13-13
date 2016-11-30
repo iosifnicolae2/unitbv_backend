@@ -1,0 +1,137 @@
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] MongoDB starting : pid=47 port=27017 dbpath=/server/data/db 64-bit host=cfb9fff9538f
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] db version v3.2.8
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] git version: ed70e33130c977bda0024c125b56d159573dbaf0
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g-fips  1 Mar 2016
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] modules: none
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] build environment:
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2016-08-05T17:05:06.655+0000 I CONTROL  [initandlisten] options: { config: "/server/conf/mongod.conf", net: { bindIp: "0.0.0.0", port: 27017 }, processManagement: { fork: true, pidFilePath: "/var/run/mongodb/mongod.pid" }, storage: { dbPath: "/server/data/db", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: false, path: "/server/log/mongodb.log" } }
+2016-08-05T17:05:06.670+0000 I -        [initandlisten] Detected data files in /server/data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2016-08-05T17:05:06.670+0000 W -        [initandlisten] Detected unclean shutdown - /server/data/db/mongod.lock is not empty.
+2016-08-05T17:05:06.670+0000 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2016-08-05T17:05:06.670+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=6G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] 
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] 
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] 
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2016-08-05T17:05:06.875+0000 I CONTROL  [initandlisten] 
+2016-08-05T17:05:06.878+0000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/server/data/db/diagnostic.data'
+2016-08-05T17:05:06.879+0000 I NETWORK  [initandlisten] waiting for connections on port 27017
+2016-08-05T17:05:06.879+0000 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2016-08-05T17:05:07.010+0000 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2016-08-05T17:08:33.676+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41301 #1 (1 connection now open)
+2016-08-05T17:08:33.742+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41302 #2 (2 connections now open)
+2016-08-05T17:08:41.431+0000 I NETWORK  [conn1] end connection 172.17.0.1:41301 (1 connection now open)
+2016-08-05T17:08:41.435+0000 I NETWORK  [conn2] end connection 172.17.0.1:41302 (0 connections now open)
+2016-08-05T17:08:45.666+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41556 #3 (1 connection now open)
+2016-08-05T17:08:45.720+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41558 #4 (2 connections now open)
+2016-08-05T17:08:54.723+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41749 #5 (3 connections now open)
+2016-08-05T17:08:54.792+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41750 #6 (4 connections now open)
+2016-08-05T17:08:55.742+0000 I NETWORK  [conn5] end connection 172.17.0.1:41749 (3 connections now open)
+2016-08-05T17:08:55.746+0000 I NETWORK  [conn6] end connection 172.17.0.1:41750 (2 connections now open)
+2016-08-05T17:08:57.207+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41812 #7 (3 connections now open)
+2016-08-05T17:08:57.260+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41813 #8 (4 connections now open)
+2016-08-05T17:08:59.189+0000 I NETWORK  [conn3] end connection 172.17.0.1:41556 (3 connections now open)
+2016-08-05T17:08:59.191+0000 I NETWORK  [conn4] end connection 172.17.0.1:41558 (2 connections now open)
+2016-08-05T17:09:03.747+0000 I NETWORK  [conn7] end connection 172.17.0.1:41812 (1 connection now open)
+2016-08-05T17:09:03.749+0000 I NETWORK  [conn8] end connection 172.17.0.1:41813 (0 connections now open)
+2016-08-05T17:09:05.733+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41984 #9 (1 connection now open)
+2016-08-05T17:09:05.787+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:41985 #10 (2 connections now open)
+2016-08-05T17:48:30.842+0000 I COMMAND  [conn9] CMD: drop uf.temp
+2016-08-05T17:51:56.095+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:40795 #11 (3 connections now open)
+2016-08-05T17:52:09.212+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:40437 #12 (4 connections now open)
+2016-08-05T17:52:09.266+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:40438 #13 (5 connections now open)
+2016-08-05T17:56:34.809+0000 I NETWORK  [conn11] end connection 127.0.0.1:40795 (4 connections now open)
+2016-08-05T17:57:02.772+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47370 #14 (5 connections now open)
+2016-08-05T17:58:01.359+0000 I NETWORK  [conn14] end connection 127.0.0.1:47370 (4 connections now open)
+2016-08-05T17:58:03.955+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:48668 #15 (5 connections now open)
+2016-08-05T17:58:22.831+0000 I NETWORK  [conn15] end connection 127.0.0.1:48668 (4 connections now open)
+2016-08-05T17:58:23.372+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:49074 #16 (5 connections now open)
+2016-08-05T18:00:49.090+0000 I NETWORK  [conn16] end connection 127.0.0.1:49074 (4 connections now open)
+2016-08-05T18:00:49.648+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52177 #17 (5 connections now open)
+2016-08-05T18:10:03.341+0000 I NETWORK  [conn17] end connection 127.0.0.1:52177 (4 connections now open)
+2016-08-05T18:10:03.899+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:35780 #18 (5 connections now open)
+2016-08-05T18:11:43.346+0000 I NETWORK  [conn18] end connection 127.0.0.1:35780 (4 connections now open)
+2016-08-05T18:11:43.910+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:37964 #19 (5 connections now open)
+2016-08-05T18:11:43.945+0000 I INDEX    [conn19] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:23:45.339+0000 I NETWORK  [conn19] end connection 127.0.0.1:37964 (4 connections now open)
+2016-08-05T18:23:48.871+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:53416 #20 (5 connections now open)
+2016-08-05T18:23:48.905+0000 I INDEX    [conn20] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:24:24.455+0000 I NETWORK  [conn20] end connection 127.0.0.1:53416 (4 connections now open)
+2016-08-05T18:24:25.013+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:54182 #21 (5 connections now open)
+2016-08-05T18:24:25.047+0000 I INDEX    [conn21] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:27:57.387+0000 I NETWORK  [conn21] end connection 127.0.0.1:54182 (4 connections now open)
+2016-08-05T18:28:00.876+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:58807 #22 (5 connections now open)
+2016-08-05T18:28:00.917+0000 I INDEX    [conn22] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:28:25.964+0000 I NETWORK  [conn22] end connection 127.0.0.1:58807 (4 connections now open)
+2016-08-05T18:28:29.727+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:59409 #23 (5 connections now open)
+2016-08-05T18:28:29.763+0000 I INDEX    [conn23] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:36:33.083+0000 I NETWORK  [conn23] end connection 127.0.0.1:59409 (4 connections now open)
+2016-08-05T18:37:25.456+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:42592 #24 (5 connections now open)
+2016-08-05T18:37:25.492+0000 I INDEX    [conn24] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:37:42.328+0000 I NETWORK  [conn24] end connection 127.0.0.1:42592 (4 connections now open)
+2016-08-05T18:37:45.910+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:43024 #25 (5 connections now open)
+2016-08-05T18:37:45.947+0000 I INDEX    [conn25] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:38:08.279+0000 I NETWORK  [conn25] end connection 127.0.0.1:43024 (4 connections now open)
+2016-08-05T18:38:10.710+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:43552 #26 (5 connections now open)
+2016-08-05T18:38:10.745+0000 I INDEX    [conn26] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:40:15.798+0000 I NETWORK  [conn26] end connection 127.0.0.1:43552 (4 connections now open)
+2016-08-05T18:40:18.436+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46262 #27 (5 connections now open)
+2016-08-05T18:40:18.474+0000 I INDEX    [conn27] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:40:57.856+0000 I NETWORK  [conn27] end connection 127.0.0.1:46262 (4 connections now open)
+2016-08-05T18:40:58.400+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47108 #28 (5 connections now open)
+2016-08-05T18:40:58.434+0000 I INDEX    [conn28] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:49:46.075+0000 I NETWORK  [conn28] end connection 127.0.0.1:47108 (4 connections now open)
+2016-08-05T18:49:46.625+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:58400 #29 (5 connections now open)
+2016-08-05T18:49:46.660+0000 I INDEX    [conn29] build index on: uf.users properties: { v: 1, unique: true, key: { username: 1 }, name: "username_1", ns: "uf.users", background: true }
+2016-08-05T18:49:46.660+0000 I INDEX    [conn29] build index done.  scanned 5 total records. 0 secs
+2016-08-05T18:53:04.565+0000 I NETWORK  [conn29] end connection 127.0.0.1:58400 (4 connections now open)
+2016-08-05T18:53:05.101+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:34368 #30 (5 connections now open)
+2016-08-05T18:53:22.400+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:34098 #31 (6 connections now open)
+2016-08-05T18:53:22.459+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:34099 #32 (7 connections now open)
+2016-08-05T18:53:39.566+0000 I NETWORK  [conn30] end connection 127.0.0.1:34368 (6 connections now open)
+2016-08-05T18:53:40.128+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:35119 #33 (7 connections now open)
+2016-08-05T18:54:00.115+0000 I NETWORK  [conn33] end connection 127.0.0.1:35119 (6 connections now open)
+2016-08-05T18:54:00.672+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:35551 #34 (7 connections now open)
+2016-08-05T18:54:26.307+0000 I NETWORK  [conn34] end connection 127.0.0.1:35551 (6 connections now open)
+2016-08-05T18:54:29.702+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:36165 #35 (7 connections now open)
+2016-08-05T18:54:46.936+0000 I NETWORK  [conn35] end connection 127.0.0.1:36165 (6 connections now open)
+2016-08-05T18:54:47.494+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:36547 #36 (7 connections now open)
+2016-08-05T18:55:19.992+0000 I NETWORK  [conn36] end connection 127.0.0.1:36547 (6 connections now open)
+2016-08-05T18:55:22.878+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:37327 #37 (7 connections now open)
+2016-08-05T18:56:14.092+0000 I NETWORK  [conn37] end connection 127.0.0.1:37327 (6 connections now open)
+2016-08-05T18:56:47.125+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:39140 #38 (7 connections now open)
+2016-08-05T18:57:02.967+0000 I NETWORK  [conn38] end connection 127.0.0.1:39140 (6 connections now open)
+2016-08-05T18:57:05.311+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:39528 #39 (7 connections now open)
+2016-08-05T18:57:23.873+0000 I NETWORK  [conn39] end connection 127.0.0.1:39528 (6 connections now open)
+2016-08-05T18:57:24.429+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:39933 #40 (7 connections now open)
+2016-08-05T19:06:46.880+0000 I NETWORK  [conn40] end connection 127.0.0.1:39933 (6 connections now open)
+2016-08-05T19:08:09.502+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:53731 #41 (7 connections now open)
+2016-08-05T19:08:38.572+0000 I NETWORK  [conn41] end connection 127.0.0.1:53731 (6 connections now open)
+2016-08-05T19:08:40.834+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:54401 #42 (7 connections now open)
+2016-08-05T19:09:22.157+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:54640 #43 (8 connections now open)
+2016-08-05T19:09:22.217+0000 I NETWORK  [initandlisten] connection accepted from 172.17.0.1:54641 #44 (9 connections now open)
+2016-08-05T19:11:45.645+0000 I NETWORK  [conn42] end connection 127.0.0.1:54401 (8 connections now open)
+2016-08-05T19:11:47.112+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:58349 #45 (9 connections now open)
+2016-08-05T19:20:41.422+0000 I NETWORK  [conn45] end connection 127.0.0.1:58349 (8 connections now open)
+2016-08-05T19:20:42.900+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:41488 #46 (9 connections now open)
+2016-08-05T19:28:55.036+0000 I NETWORK  [conn46] end connection 127.0.0.1:41488 (8 connections now open)
+2016-08-05T19:28:56.424+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:51982 #47 (9 connections now open)
+2016-08-05T19:41:14.750+0000 I NETWORK  [conn47] end connection 127.0.0.1:51982 (8 connections now open)
+2016-08-05T19:41:16.120+0000 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:39420 #48 (9 connections now open)
+2016-08-05T19:45:30.497+0000 I NETWORK  [conn12] end connection 172.17.0.1:40437 (8 connections now open)
+2016-08-05T19:45:30.498+0000 I NETWORK  [conn13] end connection 172.17.0.1:40438 (7 connections now open)
+2016-08-05T19:45:30.499+0000 I NETWORK  [conn43] end connection 172.17.0.1:54640 (6 connections now open)
+2016-08-05T19:45:30.500+0000 I NETWORK  [conn31] end connection 172.17.0.1:34098 (5 connections now open)
+2016-08-05T19:45:30.501+0000 I NETWORK  [conn44] end connection 172.17.0.1:54641 (4 connections now open)
+2016-08-05T19:45:30.502+0000 I NETWORK  [conn32] end connection 172.17.0.1:34099 (3 connections now open)
+2016-08-05T19:45:30.524+0000 I NETWORK  [conn9] end connection 172.17.0.1:41984 (2 connections now open)
+2016-08-05T19:45:30.524+0000 I NETWORK  [conn10] end connection 172.17.0.1:41985 (1 connection now open)
+2016-08-05T19:45:32.479+0000 I NETWORK  [conn48] end connection 127.0.0.1:39420 (0 connections now open)

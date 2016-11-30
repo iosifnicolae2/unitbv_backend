@@ -1,0 +1,159 @@
+
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Find a business</title>
+<style>
+      #controls {
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 11px;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+            left: 25px;
+    top: 8px;
+        position: absolute;
+        width: 400px;
+        z-index: 20000;
+      }
+       html, body, #map_canvas {
+                  margin: 0;
+                  width: 100%;
+                  height: 100%;
+              }
+              .gm-style-mtc {
+  display: none;
+}
+#current{
+  margin-top: 10px;
+    margin-left: 3px;
+    color: #222;
+font-size: 15px;
+}
+#address{
+  padding-left: 6px;
+padding-right: 6px;
+margin-right: 8px;
+}
+#map_canvas > div > div:nth-child(1){
+  cursor:pointer!important;
+}
+#controls>input,button{
+    height: 27px;
+              color: #333;
+            background-color: #fff;
+            border:1px solid #ccc;
+            padding: 0px 7px;
+          }
+button:hover{
+    background-color: #e6e6e6;
+    border-color: #adadad;
+
+}
+#select_marker{
+  float: right;
+    margin-left: 0px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+    margin-right: 7px;
+    background-color: #60b864;
+    color: #fff;
+    border-width: 0px;
+}
+
+</style>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyAUHqScjnvac47k9rNIMvsMEg0xOC5JaoI&v=3.5&amp;sensor=false"></script>
+<script type="text/javascript">
+var geocoder;
+var map;
+var marker;
+
+function initialize() {
+geocoder = new google.maps.Geocoder();
+var latlng = new google.maps.LatLng(45.783,24.785 );
+var myOptions = {
+  zoom: 6,
+  center: latlng,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+}
+map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+map.addListener('click', function(event) {
+  clearMarker(marker);
+  marker = new google.maps.Marker({
+      position: event.latLng,
+      draggable: true
+  });
+   placeMarker(marker);
+});
+}
+function placeMarker(marker) {
+  // Javascript//
+    map.setCenter(marker.getPosition());
+
+
+    marker_text(marker.getPosition());
+  google.maps.event.addListener(marker, 'dragend', function(evt){
+    marker_text(evt.latLng);
+  });
+
+  google.maps.event.addListener(marker, 'drag', function(evt){
+
+      marker_text(evt.latLng);
+  });
+
+
+  marker.setMap(map);
+
+}
+
+
+function marker_text(location){
+  document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + location.lat().toFixed(3) + ' Current Lng: ' + location.lng().toFixed(3) + '</p><button onclick=use_this_location() id="select_marker">Use this location</button>';
+
+}
+function clearMarker(marker) {
+  if(marker)
+  marker.setMap(null);
+}
+
+
+function use_this_location(){
+  window.opener.$("#location_lat").val(marker.getPosition().lat());
+  window.opener.$("#location_long").val(marker.getPosition().lng());
+  close();
+}
+
+function codeAddress() {
+var address = document.getElementById("address").value;
+geocoder.geocode( { 'address': address}, function(results, status) {
+  if (status == google.maps.GeocoderStatus.OK) {
+    clearMarker(marker);
+    marker = new google.maps.Marker({
+        draggable: true,
+        position: results[0].geometry.location
+
+    });
+    if(map.getZoom()<8)
+      map.setZoom(8);
+      placeMarker(marker);
+      map.setCenter(marker.position);
+
+  } else {
+    alert("Geocode was not successful for the following reason: " + status);
+  }
+});
+}
+</script>
+
+</head>
+<body onload="initialize()">
+<div id="controls">
+<input id="address" type="textbox" value="" placeholder="Insert business name here.">
+
+<input id="search_btn" type="button" value="Search" onclick="codeAddress()">
+ <div id="current" style="background-color:white;">Please add a marker on map.</div>
+</div>
+<div id="map_canvas"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<modal-dialog-wrapper  class="">
+  <modal-dialog id="show_picture">
+        <div id="dialog-images-wrapper">
+          <a href="#" id="album_chevron_left">
+            <svg width="30" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <use fill="#fff" id="chevron_left" xlink:href="#chevron_left" />
+          </svg>
+          </a>
+        <dialog-image>
+        </dialog-image>
+        <a href="#" id="album_chevron_right">
+          <svg width="30" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+          <use fill="#fff" id="chevron_right" xlink:href="#chevron_right" />
+        </svg>
+        </a>
+      </div>
+      <dialog-comments>
+
+            <dialog-user-details>
+                <a id="dialog_username" href="/user/username">
+                  <img id="img_user_dialog"/>
+                  <span id="username_dialog"></span>
+                </a>
+                <a href="#" id="close_dialog" onclick="return close_dialogs()">
+                  <svg width="13" height="13" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                    <use id="close_ic" xlink:href="#close_ic" />
+                  </svg>
+                </a>
+            </dialog-user-details>
+
+            <div id="dialog-show-post-text">Soo beautiful.</div>
+            <div id="dialog-show-post-wrapper-textarea">
+              <textarea id="dialog-show-post-textarea" placeholder="Type your comment here.."></textarea>
+              <span id="comment_error"></span>
+              <button id="submit_comment">Submit</button>
+            </div>
+
+            <div id="comments-listview">
+            </div>
+            </div>
+      </dialog-comments>
+  </modal-dialog>
+
+  <modal-dialog id="upload_picture" class="">
+    <div class="modal-body">
+      <h3> Create post</h3>
+      <div id="upload_pictures_container">
+        <div id="upload_pictures_only_images">
+    </div>
+                            <div class="uploaded_image_container">
+                              <a class="add_media">
+                                <div id="btn_upload">
+                                  <svg width="26" height="26" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                  <use id="upload_ic" xlink:href="#upload_ic" />
+                                </svg>
+                              </div>
+                              </a>
+                          </div>
+      </div>
+      <div id="textarea_new_post">
+        <textarea id="post_message" placeholder="Please describe this journey in few words.."></textarea/>
+      </div>
+
+        <div id="upload_post_wrapper">
+          <a id="upload_post_final">Upload</a>
+        </div>
+
+    </div>
+  </modal-dialog>
+</modal-dialog-wrapper>

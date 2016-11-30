@@ -1,0 +1,16 @@
+<% if(typeof table_trophey !='undefined'){%>
+  <% table_trophey.forEach(function(trophey,i){%>
+<tr>
+    <td><%=i%></td>
+    <td><%=trophey.name%></td>
+    <td><%=trophey.description%></td>
+    <td><%=trophey.picture_url%></td>
+    <td><%=trophey.value%></td>
+    <td><%=trophey.business.name%></td>
+    <td class="text-center">
+      <a class='btn btn-info btn-xs' href="/users/edit/<%=edit_user._id%>/trophey/<%=trophey._id%>"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+       <a href="/users/remove/<%=edit_user._id%>/trophey/<%=trophey._id%>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a>
+     </td>
+</tr>
+
+<%})}%>
