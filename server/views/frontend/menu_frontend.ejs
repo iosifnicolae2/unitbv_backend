@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><%=config.websiteName%></title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<script type="text/javascript">
+var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,posts_users;
+</script>
+<link href="/static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+  <a id="home_btn" href="/"><%=config.websiteName%></a>
+  <div style="float:right;" class="menu_wrapper">
+  <a id="home_link" href="/" >Acasa</a>
+  <a id="menu_link" href="/meniu" class="active">Meniu</a>
+  <a id="profile_btn" href="/login">Logare</a>
+</div>
+</header>
+<div class="menu_container">
+  <%if(todayMenu)todayMenu.forEach(function(dish){%>
+  <div class="dish_row">
+    <img class="dish_photo" width="293px" style="max-width: 40%;" src="<%=dish.cdn_logo%>" alt="<%=dish.name%>"/>
+    <div class="dish_details">
+      <h4 class="dish_name"><%=dish.name%><b class="dish_price">
+           <%=dish.price%><br/><span class="dish_quant"><%=dish.quantity%></span>
+         </b></h4>
+<%if(dish.categories){%>
+      <ul class="dish_cats">
+        <%dish.categories.forEach(function(cat){%>
+        <li class="dish_cat">
+             <%=cat.name%>
+        </li>
+        <%})%>
+      </ul>
+      <%}%>
+      <p class="dish_description"><%=dish.short_description%></p>
+
+    </div>
+  </div>
+  <%})%>
+</div>
+
+
+
+<div class="footer">
+  <p>Copyright © Unitbv 2016. All Rights Reserved </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body>.container{
+  padding-bottom:50px;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.show {
+    visibility: visible !important; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+input#location_lat,input#location_long {
+    width: 49%;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#locate_on_map{
+  margin-top: 11px;
+float: right!important;
+margin-bottom: 6px;
+}
+
+#schedule_tip{
+  float: left;
+width: 100%;
+margin-top: 17px;
+font-size: 11px;
+color: #515151;
+line-height: 15px;
+}
+.business_logo {
+  max-width: 40px;
+  height: 40px;
+}
+table{
+}
+tr>td {
+    overflow-x: hidden;
+}
+table > thead > tr > th:nth-child(1){
+  width:65px;
+}
+.row.custyle{
+  padding-left: 2%;
+padding-right: 2%;
+width: 100%;
+margin-left: 0;
+margin-right: 0;
+}
+@media screen and (max-width: 700px) {
+    .row.custyle{
+      padding-left: 0%;
+    padding-right: 0%;
+    }
+}
+.btn-group-xs>.btn, .btn-xs {
+    margin: 1px;
+    max-width: 100%;
+}
+.poi_logo{
+      max-width: 40px;
+}

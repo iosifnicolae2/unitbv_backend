@@ -1,0 +1,24 @@
+<style>
+.cat_btn{
+  float: left;
+background: #e2e2e2;
+padding: 3px 7px;
+border-radius: 4px;
+margin: 0 2px;
+}
+</style>
+  <tbody id="table_menu_dish">
+<% if(typeof table_poi !='undefined'){%>
+  <% table_poi.forEach(function(poi,i){%>
+<tr>
+    <td><input type="checkbox" class="checkbox_menu" <%=poi.is_selected?"checked":""%>  data-id="<%=poi._id%>"/></td>
+    <td><%=poi.name%></td>
+    <td><%if(poi.categories!=null) poi.categories.forEach(function(elm){%>
+      <div class="cat_btn"><%=elm.name%></div>
+  <%})%></td>
+    <td>
+      <img class="poi_logo" src="<%=poi.cdn_logo%>"/></td>
+</tr>
+
+<%})}%>
+  </tbody>

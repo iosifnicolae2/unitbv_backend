@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><%=config.websiteName%></title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<script type="text/javascript">
+var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn="<%=images_cdn%>",posts_users;
+</script>
+
+<link rel="stylesheet" type="text/css" href="/static/css/client.css" />
+</head>
+
+<body>
+<header>
+  <a id="home_btn" href="/"><%=config.websiteName%></a>
+  <a id="profile_btn" href="/profile"></a>
+  <a id="discover" href="/discover">Discover</a>
+</header>
+
+<div class="search-holder container">
+  <div id="discovery-search-wrapper">
+    <input id="search-discovery" placeholder="I want to find places from"/>
+    <input type="button" value="OK" id="submit_search_discovery"/>
+
+  </div>
+
+</div>
+  <% include ../parts/imp_html_home %>
+  <% include ../parts/load_html_later %>
+
+<div id="discover-section">
+  <div id="search_categories">
+    <% if(cats) for(var i=0;i<cats.length;i++){%>
+    <a class="search-category" data-id="<%=cats[i]._id%>" style="background-color:<%=cats[i].color%>">
+      <img src="<%=images_cdn+cats[i].logo%>"/> <%=cats[i].name%>
+    </a>
+    <%}%>
+  </div>
+  <div id="discover-photos">
+  </div>
+</div>
+<popups >
+  <popup id="camp">
+    Aceasta zona include si o zona de campare.
+  </popup>
+</popups>
+
+<% include ../parts/modal_dialogs_home %>
+
+
+<script type="text/javascript" src="/static/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="/static/js/client.js"></script>
+<script type="text/javascript" src="/static/js/jquery.justified.min.js"></script>
+<script type="text/javascript">
+function getResource(url,success,error) {
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if (xmlhttp.status == 200) {
+              success(JSON.parse(xmlhttp.responseText));
+           }
+           else{
+              error(xmlhttp);
+           }
+        }
+    };
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+var photos_url = [];
+getResource("/api/discover/informations",function(data){
+  images_cdn = data.images_cdn;
+  user = data.user;
+  pois = data.pois;
+  posts = data.posts;
+  posts_users = data.posts_users;
+
+if(posts){
+
+    for(var i=0;i<posts.length;i++){
+      photos_url = photos_url.concat(posts[i].images);
+    }
+}
+  if(photos_url) update_images(photos_url);
+
+},function(err){
+  console.log("errr",err);
+  //TODO
+})
+</script>
+</body>
+</html>

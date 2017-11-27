@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include parts/head_content.ejs %>
+    <style>
+    #categories_table{
+      margin-top:30px;
+    }
+    #add_categories{
+      margin-bottom:10px;
+    }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <% include parts/navbar.ejs %>
+
+
+
+        <div class="row col-md-10 col-md-offset-1 custyle" id="categories_table">
+        <table class="table table-striped custab">
+        <thead>
+        <a id="add_categories" href="/categories/add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
+            <tr>
+                <th>Nr.crt.</th>
+                <th>Name</th>
+                <th>Short Description</th>
+                <th>Logo</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <% include ./provider/table_categories.ejs %>
+
+
+        </table>
+        </div>
+
+
+    </div> <!-- /container -->
+
+
+
+          <% include parts/scripts.ejs %>
+  </body>
+</html>
