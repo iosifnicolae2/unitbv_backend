@@ -60,3 +60,4 @@ typings/
 *.log.*
 mongo_data
 !.gitkeep
+mongo_data/**/**

@@ -6,6 +6,9 @@ var xlsx = require('node-xlsx');
 var fs = require('fs');
 var obj = xlsx.parse('./public/orar/orar.xls'); // parses a file
 
+router.get('/test', function(req, res) {
+  res.json({test: 'ok12'});
+});
 
 router.get('/orar',function(req, res) {
 console.log("generate orar");

@@ -23,7 +23,6 @@ var redisStore = require('connect-redis')(session);
 
 mongoose.connect(mongodb_config.url);
 
-
 // Create a new Express application.
 var app = express();
 
