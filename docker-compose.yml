@@ -1,0 +1,57 @@
+version: '2'
+services:
+  node-app:
+    image: iosifnicolae2/node-app-simple:latest
+    environment:
+      PORT: '3000'
+    volumes:
+    - ./server:/server
+    links:
+    - mongodb:mongodb
+    - reddis:reddis
+    ports:
+    - 48596:3000/tcp
+  mongo-express:
+    image: mongo-express
+    environment:
+      ME_CONFIG_BASICAUTH_PASSWORD: yt87uga9fy98asf89yasyf
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+    stdin_open: true
+    tty: true
+    links:
+    - mongodb:mongo
+    ports:
+    - 47935:8081/tcp
+    labels:
+      io.rancher.container.pull_image: always
+  reddis:
+    image: redis
+  mongodb:
+    image: mongo
+    volumes:
+    - ./mongo_data:/data/db
+    - ./mongo_data/logs:/var/lib/mongodb
+    ports:
+    - 47088:27017/tcp
+    - 47593:27018/tcp
+  nginx-cdn:
+    image: iosifnicolae2/nginx-cdn:latest
+    volumes:
+    - ./server:/server
+    links:
+    - node-app:node-app
+    labels:
+      io.rancher.container.pull_image: always
+    ports:
+      - 47980:80/tcp
+      - 47443:443/tcp
+  git-sync:
+    image: iosifnicolae2/git-sync-python
+    environment:
+      GIT_SYNC_REPO: http://server:yafb6fas7n67f89natfb6avs5f4asc7fb67af8am9sf@git.mailo.ml/root/unitbv_app.git
+    volumes:
+    - ./server:/server
+    command:
+    - /start.sh
+    labels:
+      io.rancher.container.start_once: 'true'
