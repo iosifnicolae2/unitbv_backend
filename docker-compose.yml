@@ -1,0 +1,38 @@
+version: '2'
+services:
+    mongo_inst_unitbv:
+      image: "mongo:3.0.15"
+      volumes:
+        - ./mongodb_docker/data/db/:/data/db
+        - ./mongodb_docker/conf/mongo.conf:/etc/mongo.conf
+        - ./mongodb_docker:/server
+      command: mongod --config /server/conf/mongo.conf
+      ports:
+        - 27017
+    reddis_instance_unitbv:
+      image: "redis:latest"
+      volumes:
+        - ./reddis_docker/:/server
+      command: redis-server /server/conf/redis.conf
+    unitbv:
+      build:
+        context: .
+        dockerfile: ./static_html/Dockerfile
+      links:
+        - mongo_inst_unitbv:mongodb
+        - reddis_instance_unitbv:reddis
+      volumes:
+        - ./static_html/:/server
+    nginx_frontend_unitbv:
+      image: "nginx:1.13.5"
+      links:
+        - mongo_inst_unitbv:mongodb_inst
+        - reddis_instance_unitbv:redis_inst
+        - unitbv:unitbv_app
+      ports:
+        - 7380:80
+        - 7343:443
+      volumes:
+        - ./nginx_docker/sites-enabled:/etc/nginx/conf.d/
+        - ./static_html/:/server
+      command: nginx -g 'daemon off';
