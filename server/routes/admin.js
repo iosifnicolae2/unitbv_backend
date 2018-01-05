@@ -10,17 +10,15 @@ res.render('login');
 })
 
 
-// router.use(function(req,res,next){
-//   console.log('Authhhh')
-//   return next();
-//   try{
-//     if(req.isAuthenticated()&&req.user.user_type==2)
-//       next();
-//     else {
-//       res.redirect('/login');
-//     }
-//   }catch(err){}
-// })
+router.use(function(req,res,next){
+  try{
+    if(req.isAuthenticated()&&req.user.user_type==2)
+      next();
+    else {
+      res.redirect('/login');
+    }
+  }catch(err){}
+})
 
 
 router.get('/admin/',function(req, res) {
