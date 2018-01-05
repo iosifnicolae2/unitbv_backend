@@ -1,11 +1,7 @@
 var express = require('express');
 
 var api_route = require('./routes/api');
-
-
-var auth_api = require('./routes/auth_api');
-var admin_route = require('./routes/admin');
-var client_route = require('./routes/client');
+var scrape_intranet = require('./module/scrape_intranet')
 
 var mongoose = require('mongoose');
 var passport = require('./module/auth/passport');
@@ -25,6 +21,13 @@ mongoose.connect(mongodb_config.url);
 
 // Create a new Express application.
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+
+var auth_api = require('./routes/auth_api');
+var admin_route = require('./routes/admin')(io);
+var client_route = require('./routes/client');
 
 // Configure view engine to render EJS templates.
 app.set('views', __dirname + '/views');
@@ -92,9 +95,11 @@ app.use('/api/auth/', auth_api);
 //app.use('/api', client_route);
 
 app.use('/', require('./routes/frontend'));
+app.use('/admin_cantina', require('./routes/admin_cantina')(io));
 
 
-
+app.use(logErrors);
+app.use(clientErrorHandler);
 
 //you must be Administrator to use this routes..
 app.use('/', admin_route);
@@ -116,5 +121,13 @@ function clientErrorHandler(err, req, res, next) {
     res.render('error',{ error: err });
 
 }
+var update_menu_hourly = () => {
+  console.log("Updating menu from intranet!");
+  scrape_intranet.full_scrape(()=>{console.log('Scrape from intranet completed!')});
+};
+update_menu_hourly();
+// Update menu from intranet every hour
+setInterval(update_menu_hourly, 60 * 60 * 1000);
 
-app.listen(3000);
+
+server.listen(3000);

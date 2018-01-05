@@ -57,16 +57,21 @@ router.get('/meniu',function(req,res,next){
   })
 });
 
-router.use(function(req,res,next){
-  if(!req.isAuthenticated())
-  if(req.headers["x-requested-with"] == 'XMLHttpRequest')
-  return res.json({error:403,message:"You must be logged!"})
-  else
-  return res.redirect('/login');
-  next();
-})
+// router.use(function(req,res,next){
+//   if(!req.isAuthenticated())
+//   if(req.headers["x-requested-with"] == 'XMLHttpRequest')
+//   return res.json({error:403,message:"You must be logged!"})
+//   else
+//   return res.redirect('/login');
+//   next();
+// })
+
 router.get('/',function(req,res,next){
   res.render('frontend/home');
+});
+
+router.get('/angajari',function(req,res,next){
+  res.render('frontend/angajari');
 });
 
 router.get('/discover',function(req,res,next){

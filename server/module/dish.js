@@ -83,48 +83,57 @@ Dish.find({}).sort('-created_at').exec(function (err, data) {
 };
 
 module.exports.getAllDishes = function(req,res,next){
-Dish.find({},function (err, data) {
-  if (err){
-    return res.render("error",{error:err});
-  }
-    return next(data);
-});
+  Dish.find({},function (err, data) {
+    if (err){
+      return res.render("error",{error:err});
+    }
+      return next(data);
+  });
 };
 
 module.exports.getTodayMenu = function(req,res,next){
-Dish.find({is_selected:true}).populate('categories','name').exec(function (err, data) {
-  if (err){
-    return res.json({error:err});
-  }
-    return res.json({data:data})
-});
+  Dish.find({is_selected:true}).populate('categories','name').exec(function (err, data) {
+    if (err){
+      return res.json({error:err});
+    }
+      return res.json({data:data})
+  });
 };
 
 
 module.exports.getTodayMenuFilterCat = function(req,res,next){
-Dish.find({is_selected:true,categories:req.params.uid}).populate('categories','name').exec(function (err, data) {
-  if (err){
-    return res.json({error:err});
-  }
-    return res.json({data:data})
-});
+  Dish.find({is_selected:true,categories:req.params.uid}).populate('categories','name').exec(function (err, data) {
+    if (err){
+      return res.json({error:err});
+    }
+      return res.json({data:data})
+  });
 };
 
 module.exports.getTodayMenuFilterCats = function(req,res,next){
-Dish.find({is_selected:true,categories:{$in:req.body[0]}}).populate('categories','name').exec(function (err, data) {
-  if (err){
-    return res.json({error:err});
-  }
-    return res.json({data:data})
-});
+  Dish.find({is_selected:true,categories:{$in:req.body[0]}}).populate('categories','name').exec(function (err, data) {
+    if (err){
+      return res.json({error:err});
+    }
+      return res.json({data:data})
+  });
 };
 module.exports.getTodayMenuC = function(req,res,next){
-Dish.find({is_selected:true}).populate('categories','name').exec(function (err, data) {
-  if (err){
-    return next(err);
-  }
-    return next(err,data);
-});
+  Dish.find({is_selected:true}).populate('categories','name').exec(function (err, data) {
+    if (err){
+      return next(err);
+    }
+      return next(err,data);
+  });
+};
+
+module.exports.getAdminCantinaDishes = function(req,res,next){
+  Dish.find({}).sort("created_at").populate('categories','name').exec(function (err, data) {
+    if (err){
+      return next(err);
+    }
+      return next(err,data);
+  });
 };
 
 
@@ -164,6 +173,7 @@ Dish.update({_id:id},{ban:true},function (err, data) {
 };
 
 module.exports.updateMenu = function(req,res){
+  // TODO we should use promises
   Dish.update({  },{is_selected:false},{ multi: true },function (err, data) {
     if (err){
       return res.send(err);
@@ -178,7 +188,45 @@ module.exports.updateMenu = function(req,res){
 
 };
 
+module.exports.enableDish = function(req, res, dish_id, next) {
+  Dish.update({ _id : { $in : [dish_id] } },{is_selected:true},{ multi: true },function (err, data) {
+    if (err){
+      return next(err);
+    }
+    next(false, data)
+  });
+}
 
+module.exports.disableDish = function(req, res, dish_id, next) {
+  Dish.update({ _id : { $in : [dish_id] } },{is_selected:false},{ multi: true },function (err, data) {
+    if (err){
+      return next(err);
+    }
+    next(false, data)
+  });
+}
+
+
+module.exports.update_from_intranet_data = function(menu) {
+  // TODO we should use promises
+  Dish.update({is_selected: true},{is_selected:false},{ multi: true },function (err, data) {
+    if (err){
+      console.log(err)
+    }
+
+      menu.tbl.forEach(function(dish) {
+        let dish_name = dish.denumire;
+          Dish.update({ name: {
+              $regex: new RegExp('^' + dish_name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + '$', 'i')
+          }},{is_selected:true},{ multi: true },function (err, data) {
+            if (err){
+              console.log(err)
+            }
+            // next(false, data)
+          });
+      });
+  });
+};
 
 module.exports.edit_initial = function(id,req,res){
 Dish.findOne({_id:id},function (err, Dish) {

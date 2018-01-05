@@ -11,27 +11,28 @@ var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,po
 </head>
 
 <body>
+  <div  class="page_wrapper">
 <header>
   <a id="home_btn" href="/"><%=config.websiteName%></a>
   <div style="float:right;" class="menu_wrapper">
   <a id="home_link" href="/" class="active">Acasa</a>
-  <a id="menu_link" href="/meniu">Meniu</a>
-  <a id="profile_btn" href="/login">Logare</a>
+  <a id="menu_link" href="/meniu" >Meniu</a>
+  <a id="menu_link" href="/angajari">Angajari</a>
 </div>
 </header>
 
-<div style="width: 100%;float: left;    margin-top: 52px;    margin-bottom: 17px;">
+<div style="width: 100%;float: left;margin-top: 9vh;margin-bottom: 17px;">
 <div id="home_jumb_l" style="width: 50%;float: left;">
-  <h2 style="margin-top: 64px;font-size: 102%;margin-bottom: 0px;">Enjoy delicious food!</h2>
-    <h4 style="font-size: 74%;color: #939393;margin-top: 8px;">From Brasov for you</h4>
+  <h2 style="margin-top: 64px;font-size: 102%;margin-bottom: 0px;">Enjoy delicious food</h2>
+    <h4 style="font-size: 74%;color: #939393;margin-top: 8px;">You're welcome!</h4>
     <a href="/meniu" class="btn"> Vezi meniul</a>
 </div>
-<div style="width: 50%;float: left;padding-right: 20px;" >
-  <img width="254px" src="/static/static_img/home_img.jpg" alt="Food image" style="max-width: 100%;"/>
+<div style="width: 50%;float: left;padding-right: 20px;" class="image_homepage" >
+  <img width="354px" src="/static/static_img/home_img.jpg" alt="Food image" style="max-width: 100%;"/>
 </div>
 </div>
 
-<div id="android_app" class="section grey">
+<!-- <div id="android_app" class="section grey">
   <div class="col-md-6" id="phone_wrapper">
     <img width="293px" style="max-width: 100%;"src="/static/static_img/home_screen.png" alt="Unitbv Android app"/>
   </div>
@@ -41,10 +42,21 @@ var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,po
     <p style="margin-top: 8px;font-size: 101%;"> App description</p>
     <a href="https://play.google.com/store"><img style="    height: 68px;    margin-top: 31px;    margin-left: -8px;"src="/static/static_img/google-badge.png"></a>
   </div>
+</div> -->
 </div>
+
 <div class="footer">
-  <p>Copyright © Unitbv 2016. All Rights Reserved </p>
+  <p>Copyright © Unitbv 2018. All Rights Reserved </p>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112003984-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112003984-1');
+</script>
 
 </body>
 </html>

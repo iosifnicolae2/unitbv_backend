@@ -61,3 +61,8 @@ typings/
 mongo_data
 !.gitkeep
 mongo_data/**/**
+intranet_directory/**
+**/intranet_directory/**
+server/intranet_directory/*
+!server/intranet_directory/.gitkeep
+package-lock.json

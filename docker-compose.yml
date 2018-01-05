@@ -1,7 +1,7 @@
 version: '2'
 services:
   node-app:
-    image: iosifnicolae2/node-app-simple:latest
+    image: iosifnicolae2/node-app-simple-phantomjs:latest
     environment:
       PORT: '3000'
     volumes:

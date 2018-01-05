@@ -15,7 +15,7 @@ module.exports.add = function(req,res){
   //todo add some validation
 
   bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(req.body.password, salt, function(err, hash) {
+    bcrypt.hash(req.body.password, salt, null, function(err, hash) {
       var user = new User({
         username: req.body.username,
         password: hash,
@@ -80,7 +80,7 @@ module.exports.edit = function(id,req,res){
 
   if(req.body.password){
     bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
+      bcrypt.hash(req.body.password, salt, null, function(err, hash) {
           update_fields.password = hash;
         User.update({_id:id},update_fields,function (err, user) {
           if (err){

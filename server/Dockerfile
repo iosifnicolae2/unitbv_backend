@@ -1,19 +1,9 @@
-FROM node:6
-RUN npm install -g nodemon@1.10.2
-RUN npm install -g pm2
+FROM iosifnicolae2/node-app-simple:latest
 
-RUN apt-get update && \
-	apt-get install libstdc++6
-
-EXPOSE  3000
-
-VOLUME  /server
-WORKDIR /server
-
-
-
-#Run application
-#CMD ["/server/scripts/start_server.sh"]
-ENTRYPOINT /server/scripts/start_server.sh
-#CMD /bin/bash
-
+# 2: Download+Install PhantomJS, as the npm package 'phantomjs-prebuilt' won't work on alpine!
+# See https://github.com/dustinblackman/phantomized
+RUN set -ex \
+  && apk add --no-cache --virtual .build-deps ca-certificates openssl \
+  && wget -qO- "https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz" | tar xz -C / \
+  && npm install -g phantomjs \
+  && apk del .build-deps

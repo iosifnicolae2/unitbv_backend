@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="menu_page">
+<html class="menu_page admin_cantina_page">
 <head>
 <meta charset="UTF-8">
 <title><%=config.websiteName%></title>
@@ -12,14 +12,7 @@ var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,po
 
 <body>
 <div class="page_wrapper">
-<header>
-  <a id="home_btn" href="/"><img class="home_logo" src="/static/static_img/unitbv_cantina.png" alt="<%=config.websiteName%>"/></a>
-  <div style="float:right;" class="menu_wrapper">
-  <a id="home_link" href="/" >Acasa</a>
-  <a id="menu_link" href="/meniu" class="active">Meniu</a>
-  <a id="menu_link" href="/angajari">Angajari</a>
-</div>
-</header>
+<div class="title_admin_cantina">Admin cantina</div>
 <div class="menu_container">
   <%if(todayMenu)todayMenu.forEach(function(dish){%>
   <div class="dish_row">
@@ -28,19 +21,12 @@ var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,po
     </div>
     <div class="dish_details">
       <h4 class="dish_name"><%=dish.name%></h4>
-<%if(dish.categories){%>
-      <ul class="dish_cats">
-        <%dish.categories.forEach(function(cat){%>
-        <li class="dish_cat">
-             <%=cat.name%>
-        </li>
-        <%})%>
-      </ul>
-      <%}%>
-      <p class="dish_description"><%=dish.short_description%></p>
-      <div class="dish_price">
-        <b><%=dish.price%></b>/<span class="dish_quant"><%=dish.quantity%></span>
-      </div>
+      <div class="admin_btns">
+
+        <a href="/admin_cantina/disable_menu/<%=dish.id%>" class="admin_dish_btn disable_btn <%if(!dish.is_selected){%>disabled<%}%>">Disable</a>
+        <a href="/admin_cantina/enable_menu/<%=dish.id%>" class="admin_dish_btn enable_btn <%if(dish.is_selected){%>disabled<%}%>">Enable</a>
+    </div>
+
     </div>
   </div>
   <%})%>
@@ -51,14 +37,6 @@ var user=null, pois,posts,update_feed= null,update_feed_ok = false,images_cdn,po
 <div class="footer">
   <p>Copyright © Unitbv 2016. All Rights Reserved </p>
 </div>
-<script src="/static/js/socket.io.js"></script>
-<script>
-  var socket = io.connect();
-  socket.on('update_menu', function (data) {
-    location.reload();
-  });
-</script>
-
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112003984-1"></script>
 <script>

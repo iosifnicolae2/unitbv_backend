@@ -24,9 +24,6 @@ var storage_images = multer.diskStorage({
     });
 
 
-router.post('/dish/updateMenu',function(req,res){
-  dish_module.updateMenu(req,res);
-})
 
 router.get('/dishes',function(req, res) {
   dish_module.getAllDishes(req,res,function(poi){
@@ -64,4 +61,10 @@ router.post('/dishes/edit/:uid',uploading_poi_images,function(req, res) {
 });
 
 
-    module.exports = router;
+module.exports = function(io) {
+  router.post('/dish/updateMenu',function(req,res){
+    io.emit('update_menu');
+    dish_module.updateMenu(req,res);
+  })
+  return router;
+};

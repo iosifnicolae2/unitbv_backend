@@ -85,12 +85,12 @@ text-transform: uppercase;
 }
 .footer{
   margin-bottom: 40px;
-float: left;
 width: 100%;
 text-align: center;
 margin-top: 61px;
 color: grey;
 font-size: 80%;
+    height: 44px;
 }
 @media screen and (max-width: 690px) {
     .section{
@@ -101,6 +101,14 @@ font-size: 80%;
     #home_jumb_l{
       padding-left:60px;
     }
+    .angajari_page #home_jumb_l {
+      width: 100%!important;
+          padding: 0 30px;
+    }
+    .angajari_picture {
+      display: none;
+    }
+
 }
 
 @media screen and (max-width: 380px) {
@@ -140,8 +148,7 @@ margin: 0 auto;
 width: 53px;
 }
 .menu_wrapper>a{
-  float: left!important;
-  margin: 0 auto!important;
+  margin: 0 5px!important;
   padding: 0;
   border-left: 0;
   border-right: 0;
@@ -162,19 +169,18 @@ text-align: center;
     margin: 15px 0;
 }
 .dish_photo{
-  max-width: 40%;
-border-radius: 7px;
-width: 147px;
-height: 147px;
-    margin: 0 24px 0 22px;
-    float: left;
+max-width: 130%;
+max-height: 100%;
+min-width:100%;
+min-height: 100%;
 }
 .dish_details{
 
 }
 h4.dish_name{
-  padding-top: 5px;
-margin-bottom: -6px;
+  margin-top:2px;
+margin-bottom: -5px;
+font-size: 1.3rem;
 }
 ul.dish_cats{
   color: rgba(0, 0, 0, 0.63);
@@ -187,22 +193,202 @@ li.dish_cat{
     margin-right: 4px;
 }
 .dish_price{
-  float: right;
-  margin-right: 13px;
   margin-top: -2px;
-  font-size: 111%;
+  font-size: 0.7rem;
 }
-p.dish_description{
-  max-width: 800px;
-text-align: justify;
-    font-size: 90%;
-    margin-top: -1px;
+.dish_description{
+  max-width: 52%;
+  text-align: justify;
+  font-size: 0.9rem;
+  margin-top: -1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 79px;
 }
 span.dish_quant{
       font-weight: normal;
-    font-size: 74%;
-    color: grey;
-    float: right;
+    font-size: 80%;
     margin-top: 3px;
 
+}
+
+#home_btn {
+  width: 100%;
+text-align: center;
+position: relative;
+float: left;
+}
+.menu_page #home_btn {
+  width: 100%;
+position: relative;
+float: left;
+text-align: left!important;
+height: 0!important;
+}
+#home_btn > img {
+  width: 111px;
+}
+@media screen and (max-width: 600px) {
+  .hide_mobile {
+    display: none;
+  }
+  #home_jumb_l {
+    width: 99%!important;
+    text-align: center;
+    padding: 0;
+  }
+  .image_homepage {
+    width: 100%!important;
+    padding: 0!important;
+  }
+  .image_homepage > img{
+    margin-top: 32px;
+    width: 27vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .dish_details {
+    width: 100%;
+    padding: 5px 29px;
+    max-width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dish_cats {
+        padding-left: 0;
+  }
+  .dish_description {
+    max-width: 100%;
+    height: auto;
+  }
+  .dish_photo_wrapper {
+    max-width: 200px!important;
+margin-left: auto!important;
+margin-right: auto!important;
+float: none!important;
+margin-bottom: 12px!important;
+  }
+  .dish_price {
+    margin-top: 11px;
+  }
+  .menu_page .menu_wrapper {
+    float: right;
+    margin-top: 71px;
+    margin-bottom: 19px;
+  }
+  .menu_page #home_btn {
+    text-align: center!important;
+    margin-top: -30px!important;
+  }
+}
+.menu_wrapper {
+  text-align: center;
+width: 100%;
+margin-top: 20px;
+}
+html, body {
+    height: 100%;
+        font-size: 16px;
+
+    overflow: hidden;
+}
+.page_wrapper {
+  min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin: 0 auto -210px;
+    background: white;
+}
+.footer > p {
+      margin-bottom: 15px;
+}
+.menu_wrapper>a {
+    margin: 0 7px!important;
+}
+
+.btn_ang {
+  background: #3F51B5;
+  padding: 13px 25px;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 35px;
+  font-size: 1.4rem;
+}
+.dish_photo_wrapper {
+  max-width: 40%;
+  border-radius: 7px;
+  width: 273px;
+  height: 158px;
+  margin: 0 24px 0 22px;
+  float: left;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin_cantina {
+  text-align: center;
+width: 100%;
+font-size: 1.4rem;
+font-weight: bold;
+margin-top: 30px;
+}
+.admin_btns {
+  height: 121px;
+  width: 60%;
+  float: right;
+  margin-top: 15px;
+}
+
+a.admin_dish_btn {
+  width: 35%;
+  float: left;
+  height: 79%;
+  text-decoration: none;
+  line-height: 98px;
+  margin: 5%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 9px;
+    color: #fff;
+}
+.disable_btn {
+  background: #B71C1C;
+}
+.enable_btn {
+  background: #8BC34A;
+}
+.admin_cantina_page .dish_row {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-bottom: 1px dotted grey;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.admin_cantina_page .dish_row:nth-child(1) {
+border-top: 1px dotted grey;
+
+}
+.admin_cantina_page .dish_name {
+  float: right;
+width: 61%;
+text-align: center;
+box-sizing: border-box;
+padding-right: 4%;
+}
+.admin_cantina_page .menu_container {
+  margin-top: 30px;
+}
+.title_admin_cantina {
+  font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+
+}
+.disabled {
+  pointer-events: none;
+  background: #efefef;
 }

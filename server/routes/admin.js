@@ -2,25 +2,36 @@ var express = require('express');
 var passport = require('passport');
 var router = express.Router();
 var fcm_module = require('../module/fcm');
+var scrape_intranet = require('../module/scrape_intranet');
+var dish = require('../module/dish');
 
 router.get('/login',function(req,res){
 res.render('login');
 })
 
 
-router.use(function(req,res,next){
-  try{
-  if(req.isAuthenticated()&&req.user.user_type==2||true)
-  next();
-  else {
-    res.redirect('/login');
-  }
-}catch(err){}
-})
+// router.use(function(req,res,next){
+//   console.log('Authhhh')
+//   return next();
+//   try{
+//     if(req.isAuthenticated()&&req.user.user_type==2)
+//       next();
+//     else {
+//       res.redirect('/login');
+//     }
+//   }catch(err){}
+// })
 
 
 router.get('/admin/',function(req, res) {
     res.redirect('/dishes');
+});
+
+router.get('/admin/run_phantom',function(req, res) {
+  scrape_intranet.update_phantom(function(data) {
+
+    res.redirect('/admin/extract_menu_from_phantom');
+  })
 });
 
 
@@ -42,8 +53,6 @@ router.use(require('./gift'));
 /* Trophey route */
 router.use(require('./trophey'));
 
-/* POI route */
-router.use(require('./dish'));
 
 /* Posts route */
 router.use(require('./posts'));
@@ -54,4 +63,25 @@ router.use(require('./business'));
 /* Categories routes */
 router.use(require('./categories'));
 
-module.exports = router;
+module.exports = function(io) {
+
+  /* POI route */
+  router.use(require('./dish')(io));
+
+
+  router.get('/admin/extract_menu_from_phantom',function(req, res) {
+    scrape_intranet.scrape_html(function(menu_of_the_day) {
+      res.send('ok');
+      io.emit('update_menu');
+    })
+  });
+
+    router.get('/admin/full_scrape',function(req, res) {
+      scrape_intranet.full_scrape(function(menu_of_the_day) {
+        res.send('ok');
+        io.emit('update_menu');
+      })
+    });
+
+  return router;
+};
