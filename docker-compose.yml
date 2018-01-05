@@ -48,7 +48,7 @@ services:
   git-sync:
     image: iosifnicolae2/git-sync-python
     environment:
-      GIT_SYNC_REPO: http://server:yafb6fas7n67f89natfb6avs5f4asc7fb67af8am9sf@git.mailo.ml/root/unitbv_app.git
+      GIT_SYNC_REPO: https://github.com/iosifnicolae2/unitbv_backend
     volumes:
     - ./server:/server
     command:
