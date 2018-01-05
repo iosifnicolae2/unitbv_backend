@@ -17,7 +17,7 @@ var fs = require('fs');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const { window } = new JSDOM(`<!DOCTYPE html>`);
-const $ = require('jQuery')(window);
+const $ = require('jquery')(window);
 
 
 if(typeof(String.prototype.trim) === "undefined") {
