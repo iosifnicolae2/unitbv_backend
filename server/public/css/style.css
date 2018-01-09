@@ -290,8 +290,6 @@ margin-top: 20px;
 html, body {
     height: 100%;
         font-size: 16px;
-
-    overflow: hidden;
 }
 .page_wrapper {
   min-height: 100%;
