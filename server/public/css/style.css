@@ -60,7 +60,7 @@ header>div>a:hover,header>div>a.active{
   text-decoration: none;
 background: #f48b1c;
 padding: 6px 13px;
-color: #fff;
+color: #fff!important;
 font-size: 73%;
 text-transform: uppercase;
 }
