@@ -53,5 +53,27 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 
-
 ```
+```Java
+// Java
+OkHttpClient client = new OkHttpClient();
+
+MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=UTF-8");
+RequestBody body = RequestBody.create(mediaType, "client_id=12345&APs%5B0%5D%5Bap_name%5D=ap1&APs%5B0%5D%5Bap_level%5D=20");
+Request request = new Request.Builder()
+  .url("https://unitbv.mailo.ml/api/queue/aps_clients")
+  .post(body)
+  .addHeader("content-type", "application/x-www-form-urlencoded; charset=UTF-8")
+  .addHeader("cache-control", "no-cache")
+  .build();
+
+Response response = client.newCall(request).execute();
+```
+```bash
+// cURL
+curl -X POST \
+  https://unitbv.mailo.ml/api/queue/aps_clients \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -d 'client_id=12345&APs%5B0%5D%5Bap_name%5D=ap1&APs%5B0%5D%5Bap_level%5D=20'
+  ```
