@@ -39,27 +39,19 @@ Android
 // Node.js code
 var request = require("request");
 
-var options = {
-  method: 'POST',
+var options = { method: 'POST',
   url: 'https://unitbv.mailo.ml/api/queue/aps_clients',
   headers: {
      'cache-control': 'no-cache',
-     'content-type': 'application/x-www-form-urlencoded'
+     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
   },
-  form: {
-    client_id: '123456789',
-    APs: [{
-      name:"ap1", level:40
-    }, {
-      name:"ap2", level:45.5
-    }]
-  }
-};
+  body: 'client_id=12345&APs%5B0%5D%5Bap_name%5D=ap1&APs%5B0%5D%5Bap_level%5D=20' };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log(body);
 });
+
 
 ```
