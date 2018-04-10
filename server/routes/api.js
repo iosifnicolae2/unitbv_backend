@@ -6,8 +6,57 @@ var xlsx = require('node-xlsx');
 var fs = require('fs');
 var obj = xlsx.parse('./public/orar/orar.xls'); // parses a file
 
+var QueueElementWaze = require('../model/queueElementWaze');
+
+
 router.get('/test', function (req, res) {
   res.json({ test: 'ok12' });
+});
+
+// Utils
+function uniq_fast(a, field) {
+    var seen = {};
+    var out = [];
+    var len = a.length;
+    var j = 0;
+    for(var i = 0; i < len; i++) {
+         var item = a[i];
+         if(seen[item[field]] !== 1) {
+               seen[item[field]] = 1;
+               out[j++] = item;
+         }
+    }
+    return out;
+}
+
+router.get('/queue/waze_clients', function (req, res) {
+  MINUTES_30 = 30*60*1000;
+  QueueElementWaze.find({
+    created_at: {
+      $gte: new Date(new Date().getTime() - MINUTES_30).toISOString()
+    }
+  }, function(err, queue_elements) {
+    var unique_queue_elements = uniq_fast(queue_elements, 'client_id');
+    var average_number_of_clients = unique_queue_elements.reduce((a, o, i, p) => a + o.number_of_clients / p.length, 0)
+    res.json({err, unique_queue_elements, average_number_of_clients});
+  });
+});
+
+router.post('/queue/waze_clients', function (req, res) {
+  // TODO(iosif) we need to validate user input
+  var queue_element = new QueueElementWaze({
+    client_id: req.body.client_id,
+    number_of_clients: req.body.number_of_clients,
+  });
+
+  queue_element.save(function (err, data) {
+        if (err) {
+          return res.json({ error: err, data: data , success: false});
+        }
+
+        res.json({error: false, success: true, data: data})
+      });
+
 });
 
 router.get('/orar', function (req, res) {
