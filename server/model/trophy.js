@@ -8,16 +8,15 @@ var trophySchema = new Schema({
   description: String,
   picture_url: String,
   value: Number,
-  business: {type:String , ref: 'Business', required:true}
+  business: { type: String, ref: 'Business', required: true },
 });
-
 
 trophySchema.set('toJSON', { getters: true });
 trophySchema.set('toObject', { getters: true });
 
 trophySchema.virtual('cdn_picture_url').get(function () {
-  if(this.picture_url)
-  return CDN.images+this.picture_url;
+  if (this.picture_url)
+  return CDN.images + this.picture_url;
   return null;
 });
 // the schema is useless so far

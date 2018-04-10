@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var FCMSchema = new Schema({
-  client_id:String,
-  device_id:String,
-  token:String
+  client_id: String,
+  device_id: String,
+  token: String,
 });
 
 

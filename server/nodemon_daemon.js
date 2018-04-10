@@ -2,7 +2,7 @@ var nodemon = require('nodemon');
 
 nodemon({
   script: 'server.js',
-  ext: 'js json'
+  ext: 'js json',
 });
 
 nodemon.on('start', function () {

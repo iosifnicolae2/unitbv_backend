@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var feedbackSchema = new Schema({
-  business: {type:String , ref: 'Business', required:true},
-  client_id:String,
-  device_id:String,
-  content:Object
+  business: { type: String, ref: 'Business', required: true },
+  client_id: String,
+  device_id: String,
+  content: Object,
 });
 
 

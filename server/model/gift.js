@@ -7,15 +7,15 @@ var giftSchema = new Schema({
   short_description: String,
   description: String,
   picture_url: String,
-  business: {type:String , ref: 'Business', required:true}
+  business: { type: String, ref: 'Business', required: true },
 });
 
 giftSchema.set('toJSON', { getters: true });
 giftSchema.set('toObject', { getters: true });
 
 giftSchema.virtual('cdn_picture_url').get(function () {
-  if(this.picture_url)
-  return CDN.images+this.picture_url;
+  if (this.picture_url)
+  return CDN.images + this.picture_url;
   return null;
 });
 
