@@ -66,3 +66,6 @@ intranet_directory/**
 server/intranet_directory/*
 !server/intranet_directory/.gitkeep
 package-lock.json
+mongo_data/*
+*.interim
+mongo_data/diagnostic.data/metrics.interim
