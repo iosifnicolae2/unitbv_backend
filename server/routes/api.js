@@ -7,6 +7,7 @@ var fs = require('fs');
 var obj = xlsx.parse('./public/orar/orar.xls'); // parses a file
 
 var QueueElementWaze = require('../model/queueElementWaze');
+var QueueElementAPs = require('../model/queueElementAPs');
 
 
 router.get('/test', function (req, res) {
@@ -47,6 +48,36 @@ router.post('/queue/waze_clients', function (req, res) {
   var queue_element = new QueueElementWaze({
     client_id: req.body.client_id,
     number_of_clients: req.body.number_of_clients,
+  });
+
+  queue_element.save(function (err, data) {
+        if (err) {
+          return res.json({ error: err, data: data , success: false});
+        }
+
+        res.json({error: false, success: true, data: data})
+      });
+
+});
+
+router.get('/queue/aps_clients', function (req, res) {
+  MINUTES_15 = 15*60*1000;
+  QueueElementAPs.find({
+    created_at: {
+      $gte: new Date(new Date().getTime() - MINUTES_15).toISOString()
+    }
+  }, function(err, queue_elements) {
+    var unique_queue_elements = uniq_fast(queue_elements, 'client_id');
+    var number_of_clients = unique_queue_elements.reduce((a, o, i, p) => a + o.in_the_queue, 0)
+    res.json({err, unique_queue_elements, number_of_clients});
+  });
+});
+
+router.post('/queue/aps_clients', function (req, res) {
+  // TODO(iosif) we need to validate user input
+  var queue_element = new QueueElementAPs({
+    client_id: req.body.client_id,
+    APs: req.body.APs,
   });
 
   queue_element.save(function (err, data) {
