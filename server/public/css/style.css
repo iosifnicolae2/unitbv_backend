@@ -15,9 +15,7 @@ body {
     font-size: 15px;
 }
 header {
-    padding: 19px 35px;
-    margin-bottom: 20px;
-    margin-top: 17px;
+    padding: 10px 35px;
 }
 #home_btn {
     text-decoration: none;
@@ -159,7 +157,7 @@ header>div>a:hover,header>div>a.active{
    }
 }
 .menu_container{
-    margin-top: 82px;
+    margin-top: 71px;
 }
 .dish_row{
     float: left;
