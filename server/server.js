@@ -1,6 +1,5 @@
 var express = require('express');
 
-var api_route = require('./routes/api');
 var scrape_intranet = require('./module/scrape_intranet');
 
 var mongoose = require('mongoose');
@@ -26,6 +25,8 @@ var io = require('socket.io')(server);
 var auth_api = require('./routes/auth_api');
 var admin_route = require('./routes/admin')(io);
 var client_route = require('./routes/client');
+
+var api_route = require('./routes/api')(io);
 
 // Configure view engine to render EJS templates.
 app.set('views', __dirname + '/views');
