@@ -132,7 +132,7 @@ module.exports.getTodayMenuC = function (req, res, next) {
 };
 
 module.exports.getAdminCantinaDishes = function (req, res, next) {
-  Dish.find({}).sort('created_at').populate('categories', 'name').exec(function (err, data) {
+  Dish.find({}).sort('-is_selected').populate('categories', 'name').exec(function (err, data) {
     if (err) {
       return next(err);
     }
