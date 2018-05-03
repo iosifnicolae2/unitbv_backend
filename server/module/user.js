@@ -1,7 +1,4 @@
 var User = require('../model/user');
-var Gift = require('../model/gift');
-var Trophey = require('../model/trophy');
-
 var bcrypt = require('bcrypt-nodejs');
 
 const saltRounds = 10;
@@ -116,8 +113,6 @@ module.exports.findById = function (id, c) {
 
 module.exports.getDashboard = function (req, res) {
   User.findOne({ _id: req.user._id, ban: false })
-  .populate('gifts')
-  .populate('trophies')
   .exec(function (err, user) {
 
     if (err)
@@ -125,40 +120,6 @@ module.exports.getDashboard = function (req, res) {
     if (user == null)
     return res.json({ error: "User doesn't exist or has been banned.", code: 340 });
 
-    User.populate(user, {
-      path: 'gifts.business',
-      model: 'Business', }, function (err, data) {
-
-          if (err) {
-            return res.render('error', { error: err });
-          }
-
-          User.populate(data, {
-            path: 'trophies.business',
-            model: 'Business', }, function (err, data2) {
-
-                if (err) {
-                  return res.render('error', { error: err });
-                }
-
-                res.json({ authentificated: true, user: data2 });
-              });
-        });
-  });
-};
-
-module.exports.getDashboardVersion = function (req, res) {
-  User.findOne({ _id: req.user._id, ban: false })
-  .select('__v gifts trophies')
-  .populate('gifts', '__v')
-  .populate('trophies', '__v')
-  .exec(function (err, user) {
-    //TODO trebuie implementat ceva custom..
-    if (err)
-    return res.json({ error: err });
-    if (user == null)
-    return res.json({ error: "User doesn't exist or has been banned.", code: 340 });
-
-    res.json({ version: user.__v });
+    res.json({ authentificated: true, user: user });
   });
 };

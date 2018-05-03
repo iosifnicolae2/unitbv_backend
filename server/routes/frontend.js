@@ -3,7 +3,6 @@ var _ = require('underscore');
 var passport = require('passport');
 var flash = require('connect-flash');
 var router = express.Router();
-var post_module = require('../module/posts');
 var categories_module = require('../module/category');
 var dish_module = require('../module/dish');
 
