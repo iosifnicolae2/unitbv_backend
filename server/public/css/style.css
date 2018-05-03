@@ -91,6 +91,7 @@ margin-top: 61px;
 color: grey;
 font-size: 80%;
     height: 44px;
+        float: left;
 }
 @media screen and (max-width: 690px) {
     .section{
@@ -394,4 +395,15 @@ padding-right: 4%;
 .disabled {
   pointer-events: none;
   background: #efefef;
+}
+.cantina_stats {
+  text-align: center;
+    font-size: 19px;
+    margin-top: 55px;
+    float: left;
+    width: 100%;
+}
+.cantina_stats > #number_of_students {
+  color: #C62828;
+
 }

@@ -7,6 +7,23 @@ var post_module = require('../module/posts');
 var categories_module = require('../module/category');
 var dish_module = require('../module/dish');
 
+var QueueElementWaze = require('../model/queueElementWaze');
+
+function uniq_fast(a, field) {
+    var seen = {};
+    var out = [];
+    var len = a.length;
+    var j = 0;
+    for(var i = 0; i < len; i++) {
+         var item = a[i];
+         if(seen[item[field]] !== 1) {
+               seen[item[field]] = 1;
+               out[j++] = item;
+         }
+    }
+    return out;
+}
+
 router.get('/login', function (req, res, next) {
   res.render('login');
 });
@@ -46,7 +63,18 @@ function filter_user(user) {
 }
 
 router.get('/', function (req, res, next) {
-  res.render('frontend/home_unlogged');
+  // Extract queue waze clients statistics
+  MINUTES_30 = 30*60*1000;
+  QueueElementWaze.find({
+    created_at: {
+      $gte: new Date(new Date().getTime() - MINUTES_30).toISOString()
+    }
+  }, function(err, queue_elements) {
+    var unique_queue_elements = uniq_fast(queue_elements, 'client_id');
+    var average_number_of_clients = unique_queue_elements.reduce((a, o, i, p) => a + o.number_of_clients / p.length, 0)
+
+    res.render('frontend/home_unlogged', {unique_queue_elements, average_number_of_clients});
+  });
 });
 
 router.get('/meniu', function (req, res, next) {
