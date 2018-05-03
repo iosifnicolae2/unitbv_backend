@@ -48,14 +48,6 @@ router.post('/login', function (req, res, next) {
   })(req, res, next);
 });
 
-router.get('/p/:uid', function (req, res) {
-  post_module.findById(res, req.params.uid, function (post, users) {
-
-    res.render('frontend/one_post_template', { post, users,
-      images_cdn: '/static/images/',
-      user: filter_user(req.user), });
-  });
-});
 
 var _ = require('underscore');
 function filter_user(user) {
@@ -97,22 +89,6 @@ router.get('/', function (req, res, next) {
   res.render('frontend/home');
 });
 
-router.get('/angajari', function (req, res, next) {
-  res.render('frontend/angajari');
-});
 
-router.get('/discover', function (req, res, next) {
-  categories_module.getAllCategoriesNamesFrontend(function (err, cats) {
-    res.render('frontend/discover', { images_cdn: '/static/images/', cats: cats });
-  });
-});
-
-router.post('/submit_like', function (req, res, next) {
-  post_module.addLike(req, res);
-});
-
-router.post('/submit_dislike', function (req, res, next) {
-  post_module.removeLike(req, res);
-});
 
 module.exports = router;
