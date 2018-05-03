@@ -42,25 +42,11 @@ router.use(require('./user'));
 /* Menu route */
 router.use(require('./menu'));
 
-/* Gifts route */
-router.use(require('./gift'));
-
-/* Trophey route */
-router.use(require('./trophey'));
-
-
-/* Posts route */
-router.use(require('./posts'));
-
-/* Business route */
-router.use(require('./business'));
-
 /* Categories routes */
 router.use(require('./categories'));
 
 module.exports = function (io) {
-
-  /* POI route */
+  /* Dish route */
   router.use(require('./dish')(io));
 
   router.get('/admin/extract_menu_from_phantom', function (req, res) {
