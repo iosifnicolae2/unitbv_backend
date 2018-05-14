@@ -40,7 +40,9 @@ module.exports = function(io) {
             }
         }, function(err, queue_elements) {
             var unique_queue_elements = uniq_fast(queue_elements, 'client_id');
-            var average_number_of_clients = unique_queue_elements.reduce((a, o, i, p) => a + o.number_of_clients / p.length, 0)
+            var average_number_of_clients = parseInt(
+                unique_queue_elements.reduce((a, o, i, p) => a + o.number_of_clients / p.length, 0)
+            );
             res.json({
                 err,
                 unique_queue_elements,
@@ -83,7 +85,9 @@ module.exports = function(io) {
             }
         }, function(err, queue_elements) {
             var unique_queue_elements = uniq_fast(queue_elements, 'client_id');
-            var number_of_clients = unique_queue_elements.reduce((a, o, i, p) => a + o.in_the_queue, 0)
+            var number_of_clients = parseInt(
+                unique_queue_elements.reduce((a, o, i, p) => a + o.in_the_queue, 0)
+            );
             res.json({
                 err,
                 unique_queue_elements,
